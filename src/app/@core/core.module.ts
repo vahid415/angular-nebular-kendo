@@ -8,25 +8,12 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 import {
   AnalyticsService,
   LayoutService,
-  PlayerService,
   SeoService,
   StateService,
 } from './utils';
 import { UserData } from './data/users';
-import { UserActivityData } from './data/user-activity';
-
-import { TrafficListData } from './data/traffic-list';
-
-import { SolarData } from './data/solar';
-
 
 import { UserService } from './mock/users.service';
-
-import { UserActivityService } from './mock/user-activity.service';
-
-import { TrafficListService } from './mock/traffic-list.service';
-
-import { SolarService } from './mock/solar.service';
 
 import { MockDataModule } from './mock/mock-data.module';
 
@@ -50,10 +37,6 @@ const socialLinks = [
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
-  { provide: UserActivityData, useClass: UserActivityService },
-  { provide: TrafficListData, useClass: TrafficListService },
-  { provide: SolarData, useClass: SolarService },
-
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
@@ -103,7 +86,6 @@ export const NB_CORE_PROVIDERS = [
   },
   AnalyticsService,
   LayoutService,
-  PlayerService,
   SeoService,
   StateService,
 ];
