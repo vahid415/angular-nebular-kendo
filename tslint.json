@@ -7,7 +7,7 @@
       "severity": "warning"
     },
     "trailing-comma": [
-      true,
+      false,
       {
         "multiline": "always",
         "singleline": "never"
@@ -71,7 +71,7 @@
     ],
     "prefer-const": true,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "radix": true,
@@ -107,13 +107,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ngx",
+      "app",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ngx",
+      "app",
       "kebab-case"
     ],
     "ban": [
