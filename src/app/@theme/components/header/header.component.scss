@@ -33,8 +33,8 @@
     width: auto;
 
     .sidebar-toggle {
-      @include nb-ltr(padding-right, 1.25rem);
-      @include nb-rtl(padding-left, 1.25rem);
+      @include nb-ltr(padding-right, 0.25rem);
+      @include nb-rtl(padding-left, 0.25rem);
       text-decoration: none;
       color: nb-theme(text-hint-color);
       nb-icon {
@@ -43,7 +43,7 @@
     }
 
     .logo {
-      padding: 0 1.25rem;
+      padding-right: 0.25rem;
       font-size: 1.75rem;
       @include nb-ltr(border-left, 1px solid nb-theme(divider-color));
       @include nb-rtl(border-right, 1px solid nb-theme(divider-color));
