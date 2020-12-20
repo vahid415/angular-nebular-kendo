@@ -16,7 +16,6 @@ export class DefaultAuthenticationProviderService implements AuthenticationProvi
     private httpClient: HttpClient,
     private injector: Injector
   ) {
-    debugger
   }
 
   changeUserPassword(currentPassword: string, newPassword: string): Observable<any> {

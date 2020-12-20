@@ -10,7 +10,6 @@ export class FakeAuthenticationProviderService implements AuthenticationProvider
   readonly accessTokenLocalStorageKey = 'access_token';
 
   constructor(private httpClient: HttpClient) {
-    debugger
   }
 
   changeUserPassword(currentPassword: string, newPassword: string): Observable<any> {

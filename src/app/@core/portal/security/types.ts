@@ -42,7 +42,7 @@ export class UserIdentity {
         forcePasswordChange: boolean,
         activeOrganizationId: number,
         activeOrganizationTitle: string) {
-debugger
+
         if (!Array.isArray(permissions)) {
             throw new Error('invalid or null parameter: permissions');
         }

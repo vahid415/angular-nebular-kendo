@@ -7,8 +7,4 @@ import { AuthenticationProvider } from '../../../types';
     { provide: AuthenticationProvider, useClass: FakeAuthenticationProviderService, multi: false }
   ],
 })
-export class FakeAuthenticationProviderModule {
-  constructor () {
-    debugger
-  }
-}
+export class FakeAuthenticationProviderModule { }
