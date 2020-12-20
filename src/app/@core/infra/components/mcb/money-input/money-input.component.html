@@ -1,0 +1,22 @@
+<kendo-numerictextbox
+    kendoTooltip
+    #anchor [title]="tooltipText"
+    showOn="none"
+    [value]="value"
+    [min]="min"
+    [max]="max"
+    [autoCorrect]="autoCorrect"
+    [format]="format"
+    [decimals]="decimals"
+    [step]="step"
+    [spinners]="spinners"
+    (valueChange)="showTooltipBar($event)"
+    tooltipClass="mcb-tooltip"
+    (blur)="hideTooltip()"
+    (focus)="showTooltip()"
+    [tabIndex]="tabIndex"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [placeholder]="placeholder"
+  >
+</kendo-numerictextbox>

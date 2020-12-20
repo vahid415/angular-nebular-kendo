@@ -1,0 +1,20 @@
+<div [class]="'mcb-grid-cell-content ' + _alignStyle">
+  <span class="grid-cell" *ngIf="isNumber(type)">
+    {{resolveObject(field , cell)}}
+  </span>
+  <span class="grid-cell" *ngIf="isBoolean(type)">
+    <i class="{{resolveObject(field , cell) ? 'fa fa-check silver' : 'fa fa-times silver'}}"></i>
+  </span>
+  <span class="grid-cell" *ngIf="isDate(type)">
+    {{resolveObject(field , cell)}}
+  </span>
+  <span class="grid-cell" *ngIf="isJalaliDate(type)">
+    {{resolveObject(field , cell) | mcbJalaliDate}}
+  </span>
+  <span class="grid-cell" *ngIf="isMoney(type)">
+    {{resolveObject(field , cell) | mcbNumberSeparator}}
+  </span>
+  <span class="grid-cell" *ngIf="isString(type)">
+    {{resolveObject(field , cell)}}
+  </span>
+</div>

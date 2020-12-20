@@ -1,0 +1,30 @@
+<div class="mcb-login-area-wrapper">
+  <!--<p class="mcb-login-message" *ngIf="showErrorMessage">کلمه کاربری و یا رمز عبور اشتباه است</p>-->
+  <div class="mcb-layout">
+    <div class="mcb-login-layout">
+      <!-- <div class="text-light" *ngIf="authenticated">
+        <p>{{fullName}} گرامی</p>
+      </div> -->
+      <div class="mcb-login-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- <div class="mt-5 text-center" *ngIf="authenticated">
+      <button class="btn btn-sm btn-link" (click)="onSignOutClick()">خروج از سامانه</button>
+    </div> -->
+    <div class="mcb-logo-layout">
+      <div align="center" class="mcb-logo-img mt-5">
+        <img src="assets/template/img/maskan.png">
+      </div>
+      <h5 class="mcb-layout-title mt-3">{{'mcb'| translator}}</h5>
+      <div class="mcb-layout-desc">
+        <p class="mr-5 mt-4">{{'login_validations'|translator}}</p>
+        <ul>
+          <li>{{'userName_password_error'| translator}}</li>
+          <li>{{'locked_profile'| translator}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

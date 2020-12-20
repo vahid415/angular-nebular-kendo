@@ -1,0 +1,52 @@
+<div class="mcb-toastArea" *ngIf="toastQueueData?.length>0">
+  <!--<div *ngIf="toastQueueData?.length > 0" class="toolbarArea">-->
+  <!--<a href="#" (click)="closeAllNotification()">بستن همه </a>-->
+  <!--</div>-->
+  <div class="mcb-toastItem" *ngFor="let toast of toastQueueData; let i= index" [@fadeInOut]>
+    <div class="k-overlay" *ngIf="toast['showError']"></div>
+    <kendo-window kendoWindowContainer class="mcb-window {{toast['toastStyle']}}" [draggable]="false"
+                  (close)="closeToast(toast)"
+                  [left]="windowLeft" [top]="toast['top']" [minWidth]="90"
+                  [width]="windowWith" [height]="windowHeight">
+      <kendo-window-titlebar>
+        <span class="title">{{toast.title}} </span><a *ngIf="toast['showStackError']" (click)="checkStackTrace()"
+                                                      class="mcb-toast-error-stack">{{'stack-trace-title' | translator}}</a>
+        <i *ngIf="i>0 && i==0" class="fa fa-times"></i>
+        <button class="mcb-kendo-window-closeBtn" kendoWindowCloseAction></button>
+      </kendo-window-titlebar>
+
+      <p *ngIf="toast.type !== 'validations'; else showOther">{{toast.message}}</p>
+      <ng-template #showOther>
+        <ul *ngIf="toast['validationMessages']?.length>0">
+          <li *ngFor="let t of toast['validationMessages']">
+            {{t}}
+          </li>
+        </ul>
+      </ng-template>
+    </kendo-window>
+  </div>
+</div>
+<kendo-window
+  class="mcb-toast-error-stack-window"
+  [width]="stackWindowWidth"
+  *ngIf="showStackTraceArea"
+  [height]="stackWindowHeight"
+  [top]="stackWindowTop"
+  [left]="stackWindowLeft"
+>
+  <kendo-window-titlebar>
+    <div class='k-window-title'>{{'stack-trace-title' | translator}}</div>
+    <button kendoWindowMaximizeAction></button>
+    <button kendoWindowCloseAction (click)="showStackTraceArea = false"></button>
+  </kendo-window-titlebar>
+</kendo-window>
+
+
+<!--<kendo-window class="mcb-window {{toast.toastStyle}}" (close)="closeToast(toast)"-->
+<!--[top]="windowTop" [left]="windowLeft" [minWidth]="200" aria-modal="true"-->
+<!--[width]="300">-->
+<!--<kendo-window-titlebar>-->
+<!--<span class="title">{{data.title}}</span>-->
+<!--<button class="mcb-kendo-window-closeBtn" kendoWindowCloseAction></button>-->
+<!--</kendo-window-titlebar>-->
+

@@ -1,0 +1,54 @@
+<h3 class="login-title">ورود به سامانه</h3>
+<div style="width: 60%; margin: auto;">
+  <form mcbForm (do)="onFormSubmit()" autocomplete="off" #form="ngForm">
+    <label class="userName login-form-control">
+      <i class="fa fa-user login-user-icon"></i>
+      <input [placeholder]="'userName'| translator" kendoTextBox name="username"
+             [(ngModel)]="signingModel.username" [required]="true" maxlength="20"
+             pattern="[^\u0600-\u06FF]+$" />
+    </label>
+    <div *ngIf="form.controls['username'] && form.controls['username'].invalid &&
+            (form.controls['username'].dirty ||
+            form.controls['username'].touched)">
+      <div style="color: red;" *ngIf="form.controls['username'].errors.required">
+        {{'required_userName' | translator}}
+      </div>
+      <div style="color: red;" *ngIf="form.controls['username'].errors.pattern">
+        {{'invalid_userName' | translator}}
+      </div>
+    </div>
+    <label class="password login-form-control mt-3">
+      <i class="fa fa-key login-user-icon"></i>
+      <input kendoTextBox [placeholder]="'password'| translator" type="password" name="password"
+             maxlength="20" [(ngModel)]="signingModel.password" [required]="true"
+             pattern="[^\u0600-\u06FF]+$" />
+    </label>
+    <div *ngIf="form.controls['username'] && form.controls['password'].invalid &&
+    (form.controls['password'].dirty ||
+    form.controls['password'].touched)">
+      <div style="color: red;" *ngIf="form.controls['password'].errors.required">
+        {{'required_password' | translator}}
+      </div>
+      <div style="color: red;" *ngIf="form.controls['password'].errors.pattern">
+        {{'invalid_password' | translator}}
+      </div>
+    </div>
+
+    <!-- <mcb-captcha class="" [image]="captcha" (reloadClick)="reloadCaptcha()"></mcb-captcha> -->
+    <div class="captcha d-flex mt-3">
+      <label class="login-form-control ml-2">
+        <input [placeholder]="'captcha'| translator" kendoTextBox name="captcha"
+               [(ngModel)]="signingModel.captcha" [required]="true" [minlength]="1" maxlength="6" />
+      </label>
+      <img [src]="captcha | mcbImage" alt="کد امنیتی" />
+    </div>
+
+    <!-- <a style="color: #5e5b5b;cursor: pointer;" class="ml-3 fas fa-lock"></a>
+    <span style="color: #5e5b5b; font-weight: 500; cursor: pointer;"
+    routerLink="req-change-password">{{'forgotPassword'| translator}}</span> -->
+
+    <i class="fas fa-redo reloadCaptcha" (click)="reloadCaptcha()" title="تغییر کد امنیتی"></i>
+    <button kendoButton type="submit" class="login-btn w-100 mt-3" [primary]="true"
+            [disabled]="form.invalid">ورود</button>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+mcb-file-upload {
+  display: block;
+}
+
+.mcb-file-upload-wrapper {
+  position: relative;
+}
+
+.mcb-file-upload-wrapper input {
+  width: 100%;
+}
+
+.file-path {
+  cursor: pointer;
+}
+
+.mcb-open-dialog-btn {
+  height: 100%;
+  width: 1em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  left: 0.5em;
+  position: absolute;
+}
+
+.mcb-open-dialog-btn:focus {
+  outline: none;
+}

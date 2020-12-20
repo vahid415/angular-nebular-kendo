@@ -1,0 +1,31 @@
+<div class="mcb-brand">
+  <div style="float: right; width: 45%;">
+    <!-- <a style="margin-left: 10px; width: 32px;" class="toggle-bar"><i class="fa fa-stream"></i> </a> -->
+    <img style="width: 32px;cursor: pointer;" src="assets/template/img/menu.svg" alt="menu"
+         (click)="toggleSidebar()" />
+    <img style="width: 70px; cursor: pointer;" src="assets/template/img/maskan.png" alt="Maskan Bank"
+         (click)="goToHome()" />
+  </div>
+  <div class="text-center mt-2" style="float: left; width: 55%;">
+    <h6>{{'coreBanking' | translator}}</h6>
+    <p style="margin-bottom: 0;">{{'maskanBank' | translator}}</p>
+  </div>
+</div>
+<div class="mcb-page-header {{showSidebarClass}}">
+  <app-portal-user-area-status></app-portal-user-area-status>
+  <app-portal-user-area-breadcrumb></app-portal-user-area-breadcrumb>
+</div>
+
+
+
+<!-- <i class="menu-icon dx-icon-home">
+    </i> -->
+<!-- <nb-action icon="nb-gear" base-class="toggle-layout" (click)="toggleSidebar()"></nb-action>
+    <nb-action class="control-item" icon="nb-notifications" nbTooltip="اعلانات" nbTooltipPlacement="bottom"
+               (click)="toggleSettings()"></nb-action>
+    <nb-action class="control-item" icon="nb-email" nbTooltip="ایمیل" nbTooltipPlacement="bottom"></nb-action>
+    <nb-action class="control-item" nbTooltip="جستجو" nbTooltipPlacement="bottom">
+      <nb-search type="rotate-layout" (click)="startSearch()" placeholder="نام برنامه"
+                 (tabOut)="tabOut($event)" (submitSearch)="search($event)" (searchClose)="searchClose($event)"
+                 hint="لطفا نام برنامه ای را جهت جستجو وارد نمایید"></nb-search>
+    </nb-action> -->

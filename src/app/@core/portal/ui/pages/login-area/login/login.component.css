@@ -1,0 +1,58 @@
+.login-title {
+  padding-top: 10%;
+  padding-bottom: 5%;
+  text-align: center;
+  color: #5e5b5b;
+}
+
+.captcha {
+  float: left;
+}
+
+.captcha .reload-captcha {
+  cursor: pointer;
+  /* color: orange; */
+}
+
+.captcha img {
+  width: 80px;
+  height: 30px;
+}
+
+label{
+  position: relative;
+}
+
+.login-user-icon {
+  position: absolute;
+  top: 8px;
+  z-index: 1;
+  right: 10px;
+}
+
+.login-form-control-captcha input {
+  background-color: #e4e4e4;
+  border-radius: 5px;
+  width: 50%;
+  float: right;
+}
+
+.login-btn {
+  background-color: #f25920 !important;
+  border-radius: 10px;
+}
+
+.login-form-control input {
+  background-color: #e4e4e4;
+  border-radius: 5px;
+  border-color: #e4e4e4 !important;
+  padding-right: 25px;
+}
+
+.reloadCaptcha {
+  position: relative;
+  top: 7px;
+  float: left;
+  cursor: pointer;
+  color: #5e5b5b;
+}

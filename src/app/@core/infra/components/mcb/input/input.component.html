@@ -1,0 +1,28 @@
+<ng-container *ngIf="valueField && textField">
+  <div
+    class="mcbDivInput{{required ? ' required' : ''}}{{disabled ? ' disabled' : '' }}{{valid ? ' valid' : ' invalid' }}">
+    <input class="mcbInput" type="text" [name]="name" minlength="{{minlength}}" maxlength="{{maxlength}}"
+           max="{{max}}" min="{{min}}"
+           [required]="required" [disabled]="disabled" [readonly]="readonly" [placeholder]="placeholder"
+           [(ngModel)]="value"
+           (input)="inputChange($event)" (blur)="onTouched($event)" (keydown.enter)="request($event)">
+    <button *ngIf="!readonly" [disabled]="disabled || pending" type="button"
+            class="mcbBtnInput fa{{!pending ? ' fa-search' : ' fa-spinner'}}"
+            (click)="modalChange(true)"></button>
+    <div *ngIf="text && valid" class="mcbDivResult{{valid ? '' : ' invalid'}}">{{text}}
+      <span *ngIf="!disabled && !readonly" (click)="reset()" class="mcbSpanClear fa fa-times"></span>
+    </div>
+  </div>
+  <div class="k-overlay" *ngIf="!readonly && view"></div>
+  <kendo-window *ngIf="!readonly && view" [title]="title | translator" [width]="width" [height]="height" [top]="top"
+                [left]="left"
+                [draggable]="true" [resizable]="true" (close)="modalChange(false)">
+    <ng-content></ng-content>
+  </kendo-window>
+</ng-container>
+<ng-container *ngIf="!valueField || !textField">
+  <span class="red">Please set [valueField]: string && [textField]: string</span>
+</ng-container>
+
+
+

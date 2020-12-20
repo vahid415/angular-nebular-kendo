@@ -1,0 +1,12 @@
+<div *ngIf="showModal" class="notification-modal" (click)="showModal = false">
+  <div class="k-notification-container">
+    <div
+         class="notification-modal-content k-widget k-notification k-notification-{{result.extraOptions.style}}">
+      <div class="k-notification-wrap">
+        <span class="ml-1 k-icon k-i-{{result.extraOptions.style}}"></span>
+        <div class="k-notification-content">{{result.textKey}}</div>
+        <a class="k-icon k-i-close" (click)="showModal = false"></a>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,13 @@
+<div class="k-overlay" *ngIf="showModal"></div>
+<div *ngIf="_show" class="mcb-window-area" kendoWindowContainer>
+  <ng-template #windowTitleBar let-win>
+    <div class="k-window-title">{{title}}</div>
+    <button kendoWindowRestoreAction [window]="win"></button>
+    <button *ngIf="showMin" kendoWindowMinimizeAction [window]="win"></button>
+    <button *ngIf="showMax" kendoWindowMaximizeAction [window]="win"></button>
+    <button *ngIf="showClose" kendoWindowCloseAction [window]="win"></button>
+  </ng-template>
+  <ng-template #windowArea>
+      <ng-content></ng-content>
+  </ng-template>
+</div>

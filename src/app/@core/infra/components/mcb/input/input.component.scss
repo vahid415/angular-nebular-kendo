@@ -1,0 +1,111 @@
+.mcbInput {
+  width: 100%;
+  font-size: 14px;
+  outline: 0;
+  // border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  padding: 0 8px 0 38px;
+  line-height: 28px;
+  color: #656565;
+}
+
+.mcbDivInput {
+  position: relative;
+}
+
+.mcbBtnInput {
+  outline: none;
+  position: absolute;
+  left: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  height: 22px;
+  width: 24px;
+  line-height: 20px;
+  top: 4px;
+  text-align: center;
+  padding: 0;
+  color: #656565;
+  transition: all 0.3s;
+}
+
+.mcbBtnInput:hover {
+  // border-color: hsl(16 85% 85% / 1);
+  // color: hsl(16deg 88% 54%);
+  // background-color: hsl(16 88% 90% / 1);
+  transition: all 0.3s;
+}
+
+.mcbDivResult {
+  font-size: 12px;
+  padding: 0 10px 0 0;
+  // background-color: hsl(119 53% 90% / 1);
+  color: #317e34;
+  line-height: 24px;
+  box-sizing: border-box;
+  // border: 1px solid hsl(120 53% 85% / 1);
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.mcbDivResult.invalid {
+  // background-color: hsl(3 74% 90% / 1);
+  color: red;
+  // border-color: hsl(3 73% 80% / 1);
+}
+
+.mcbSpanClear {
+  cursor: pointer;
+  float: left;
+  line-height: 24px;
+  // color: hsl(155 31% 60% / 1);
+  box-sizing: border-box;
+  width: 28px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.mcbSpanClear:hover {
+  // color: hsl(155 31% 50% / 1);
+  transition: all 0.3s;
+}
+
+.mcbSpanClear.invalid {
+  // color: hsl(0 100% 75% / 1);
+}
+
+.mcbSpanClear.invalid:hover {
+  // color: hsl(0 100% 65% / 1);
+  transition: all 0.3s;
+}
+
+.mcbDivInput.disabled .mcbBtnInput {
+  // color: hsl(0 0% 75% / 1);
+  // background-color: hsl(0 0% 90% / 1);
+}
+
+.mcbDivInput.required .mcbInput {
+  border-right: 3px solid red;
+}
+.mcbDivInput.valid .mcbInput {
+  border-right: 3px solid #79b99e;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.mcbDivInput.invalid .mcbInput.ng-touched {
+  // border-color: hsl(6 100% 70% / 1);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.mcbDivInput.invalid .mcbInput:focus {
+  // box-shadow: 0 0 0 3px rgb(255 191 184);
+  // border-color: hsl(6 100% 70% / 1);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}

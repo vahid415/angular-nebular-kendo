@@ -41,7 +41,7 @@
     "no-console": [
       true,
       "debug",
-      "log",
+      "info",
       "time",
       "timeEnd",
       "trace"
@@ -105,7 +105,7 @@
       "check-type"
     ],
     "directive-selector": [
-      true,
+      false,
       "attribute",
       "app",
       "camelCase"
@@ -133,5 +133,5 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true
-}
+  }
 }

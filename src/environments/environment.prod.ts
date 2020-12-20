@@ -1,8 +1,7 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
-export const environment = {
+import { EnvironmentDescriptor } from './../app/@core/infra/shared/types/environment';
+
+export const environment: EnvironmentDescriptor = {
+  name: 'prod',
   production: true,
+  useFakeAuthenticationProvider: false,
 };

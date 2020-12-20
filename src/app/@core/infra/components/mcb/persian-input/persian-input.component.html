@@ -1,0 +1,19 @@
+<input
+  [(ngModel)]="value"
+  [maxlength]="maxLength"
+  [minlength]="minLength"
+  [disabled]="disabled"
+  type="text"
+  kendoTextBox
+  kendoTooltip
+  [value]="value"
+  #tooltip="kendoTooltip"
+  #anchor title=""
+  showOn="none"
+  (keyup)="showTooltip(anchor)"
+  (focus)="showTooltip(anchor)"
+  (blur)="hideTooltip()"
+  mcbPersianInput
+  #persianDir="mcbPersianInput"
+  (hideTitleBar)="handleHideTitleBar()"
+/>

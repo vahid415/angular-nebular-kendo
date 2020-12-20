@@ -1,0 +1,12 @@
+<kendo-panelbar class="mcb-form-group {{formGroupType}}">
+  <kendo-panelbar-item [title]="null"  [expanded]="expanded" [disabled]="disabled" kendoFocusOnDomReady="">
+    <ng-template kendoPanelBarItemTitle>
+      <span class="item-title">{{title}}</span>
+    </ng-template>
+    <ng-template kendoPanelBarContent>
+      <div class="item-content">
+          <ng-content></ng-content>
+      </div>
+    </ng-template>
+  </kendo-panelbar-item>
+</kendo-panelbar>

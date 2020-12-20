@@ -1,0 +1,36 @@
+<div class="mcb-lookup-area {{lookupStyle}}" kendoWindowContainer >
+  <ng-template #windowTitleBar let-win>
+    <div class="k-window-title">{{title}}</div>
+    <button kendoWindowRestoreAction [window]="win"></button>
+    <button *ngIf="showMin" kendoWindowMinimizeAction [window]="win"></button>
+    <button *ngIf="showMax" kendoWindowMaximizeAction [window]="win"></button>
+    <button *ngIf="showClose" kendoWindowCloseAction [window]="win"></button>
+  </ng-template>
+  <ng-template #lookupArea>
+    <div class="mcb-lookup-content">
+      <ng-content></ng-content>
+    </div>
+  </ng-template>
+  <div class="lookup-input">
+    <input #inputValue kendoTextBox class="input-field" [name]="name" (keydown)="getEnterStatus($event,inputValue)"
+      (keyup)="getStatus($event,inputValue)" [(ngModel)]="value" [disabled]="disabled" [readonly]="readonly"
+      [required]="required" [minlength]="minlength" [maxlength]="maxlength" [min]="min" [max]="max" [pattern]="pattern"/>
+
+      <button *ngIf="showClearText" type="button" kendoButton class="clearText" [disabled]="disabled"
+      (click)="clearText()"><i class="fa fa-times"></i>
+    </button>
+
+    <button type="button" kendoButton [disabled]="disabled" (click)="openWindow(lookupArea,windowTitleBar)"><i
+        class="fa fa-search"></i>
+    </button>
+  </div>
+  <div *ngIf="showStatus" class="mcb-lookup-status-{{lookupStyle}}">
+    <div class="mcb-lookup-details">
+      <span>{{statusMessage}}</span>
+      <button *ngIf="visibleShowDetails" type="button" (click)="showDetailsClick()" kendoButton kendoTooltip
+        [title]="showDetailsTitle" [tooltipClass]="'mcb-tooltip'"><i class="fa fa-eye"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="k-overlay" *ngIf="showModal"></div>

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
@@ -10,12 +11,17 @@ import {
   LayoutService,
   SeoService,
   StateService,
-} from './utils';
-import { UserData } from './data/users';
+} from './infra/shared/services';
+import { UserService } from './infra/shared/mock/users.service';
+import { UserData } from './infra/shared/data/users';
+import { MockDataModule } from './infra/shared/mock/mock-data.module';
+import { AppComponentsModule } from './infra/components/mcb/app-components.module';
+import { KendoComponentsModule } from './infra/components/kendo/kendo.module';
+import { CommonCoreModule } from './infra/shared/common-core.module';
+import { FakeAuthenticationProviderModule } from './portal/security/authentication/providers/fake-authentication-provider/fake-authentication-provider.module';
+import { DefaultAuthenticationProviderModule } from './portal/security/authentication/providers/default-authentication-provider/default-authentication-provider.module';
+import { Environment } from './public-api';
 
-import { UserService } from './mock/users.service';
-
-import { MockDataModule } from './mock/mock-data.module';
 
 const socialLinks = [
   {
@@ -93,11 +99,18 @@ export const NB_CORE_PROVIDERS = [
 @NgModule({
   imports: [
     CommonModule,
+    environment.useFakeAuthenticationProvider ? FakeAuthenticationProviderModule : DefaultAuthenticationProviderModule,
   ],
   exports: [
     NbAuthModule,
+    CommonCoreModule,
+    KendoComponentsModule,
+    AppComponentsModule,
   ],
   declarations: [],
+  providers: [
+    // { provide: Environment, useValue: environment },
+    ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
@@ -109,6 +122,7 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         ...NB_CORE_PROVIDERS,
+        // { provide: Environment, useValue: environment },
       ],
     };
   }

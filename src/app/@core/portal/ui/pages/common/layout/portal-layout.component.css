@@ -1,0 +1,54 @@
+:host {
+    display: block;
+}
+
+
+.k-notification-group {
+    z-index: 100000;
+}
+
+[dir="rtl"] .k-pager-wrap .k-i-arrow-e,
+[dir="rtl"] .k-pager-wrap .k-i-seek-e,
+[dir="rtl"] .k-pager-wrap .k-i-arrow-w,
+[dir="rtl"] .k-pager-wrap .k-i-seek-w {
+    transform: scaleX(1);
+}
+
+.k-textbox[readonly]{
+    opacity: .6;
+}
+
+/* ng-date-picker */
+ngb-datepicker select {
+    background: none !important;
+  }
+  
+  ngb-datepicker .ngb-dp-arrow {
+    transform: rotate(180deg) !important;
+  }
+  
+  .ngb-dp-arrow-btn {
+    color: #f15923;
+  }
+  
+  .ngb-dp-arrow-btn:hover {
+    color: #c04619;
+  }
+  
+  .ngb-dp-weekday {
+    color: #f15923 !important;
+  }
+  
+  .ngb-dp-week {
+    background-color: inherit !important;
+  }
+  
+  .ngb-dp-week-number, .ngb-dp-weekday {
+    font-style: normal !important;
+  }
+  
+  ngb-datepicker-navigation-select>.custom-select {
+    margin: 0 2px !important;
+  }
+  
+  

@@ -1,0 +1,29 @@
+.card-header {
+    line-height: 1.9rem;
+    padding: .2rem .4rem;
+    font-weight: 400;
+}
+
+.card-body {
+    padding: .4rem;
+}
+
+.list-group {
+    padding: 0;
+}
+
+.list-group-item {
+    padding: .3rem .5rem;
+}
+
+.card-header[_ngcontent-caq-c525] {
+    font-weight: 400;
+}
+
+.date {
+    padding: 4px 10px;
+}
+
+.fa {
+    margin-left: 3px;
+}

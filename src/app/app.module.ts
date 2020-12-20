@@ -1,8 +1,4 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
+import { ServiceHostToken } from './@core/portal/http/types';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -20,6 +16,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { environment } from './../environments/environment';
+import { Environment } from './@core/infra/shared/types/environment';
 
 @NgModule({
   declarations: [AppComponent],

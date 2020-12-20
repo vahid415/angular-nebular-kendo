@@ -1,0 +1,31 @@
+.login-title {
+  padding-top: 10%;
+  padding-bottom: 5%;
+  text-align: center;
+  color: #5e5b5b;
+}
+
+.login-user-icon {
+  position: absolute;
+  top: 8px;
+  z-index: 1;
+  right: 10px;
+  width: 20px;
+  background-color: #e4e4e4;
+}
+
+
+.login-btn {
+  background-color: #f25920 !important;
+  border-radius: 10px;
+}
+
+.exit {
+  color: #5e5b5b;
+  cursor: pointer;
+  text-align: center;
+}
+
+.logOut-icon{
+  font-family: 'Font Awesome 5 Free' !important;
+}

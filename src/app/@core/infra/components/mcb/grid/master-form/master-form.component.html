@@ -1,0 +1,132 @@
+<mcb-main-panel *ngIf="!addEditMainPanel" [title]="controller.masterFormModel.title | translator">
+  <kendo-panelbar class="mb-4">
+    <kendo-panelbar-item title="{{' جستجو' + ' '+ (controller.masterFormModel.entityTitle | translator)}}"
+                         [expanded]="true">
+      <ng-template kendoPanelBarContent>
+        <div class="custom-template p-2">
+          <ng-content class="p-2" select="[search-items]">
+
+          </ng-content>
+        </div>
+        <button kendoButton icon="search" class="m-2" *mcbPermission="permission.search"
+                [disabled]="controller.searchForm.invalid" (click)="searchMasterEntity()">{{'search' |
+          translator}}</button>
+        <button kendoButton icon="refresh" class="mr-1" (click)="refresh()">{{'refresh' |
+          translator}}</button>
+      </ng-template>
+    </kendo-panelbar-item>
+  </kendo-panelbar>
+
+  <ng-template #template let-anchor>
+    <span>{{ anchor.nativeElement.innerText }}</span>
+  </ng-template>
+  <div kendoTooltip showOn="none" [tooltipTemplate]="template" filter=".k-grid td"
+       (mouseover)="showTooltip($event)">
+    <kendo-grid #gridComponent [data]="gridOption.gridData" [pageSize]="gridOption.pageSize"
+                [sortable]="gridOption.sortable" [pageable]="gridOption.pagerSetting"
+                [skip]="gridOption.start" [sort]="gridOption.sortSetting" [selectable]="gridOption.selectable"
+                [selectedKeys]="gridOption.mySelection" [kendoGridSelectBy]="mySelectionKey"
+                [resizable]="gridOption.resizable" (selectionChange)="controller.getSelectedRowsData($event)"
+                (pageChange)="controller.getHandlePageChange($event)"
+                (sortChange)="controller.getHandleSortChange($event)">
+      <ng-template kendoGridToolbarTemplate>
+        <div class="d-flex">
+          <button kendoButton class="ml-2" *mcbPermission="permission.add" icon="add"
+                  (click)="addNewMasterEntity()">{{(controller.masterFormModel.addBtnTitle || 'insert')|
+            translator}}
+          </button>
+          <div *ngFor="let btn of controller.masterFormModel.masterGridToolbarBtn">
+            <button kendoButton *mcbPermission="btn.permission" [iconClass]="btn.iconClass"
+                    [primary]="btn.primary" [class]="btn.class" [type]="btn.type" [icon]="btn.icon"
+                    [disabled]="btn.disabled" (click)=" btn.click($event)">{{btn.title| translator}}
+            </button>
+          </div>
+        </div>
+      </ng-template>
+      <kendo-grid-column [sortable]="false" width="50">
+        <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
+          {{rowIndex + 1}}
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-checkbox-column *ngIf="gridComponent.selectableSettings.mode === 'multiple'" width="50">
+      </kendo-grid-checkbox-column>
+
+
+      <kendo-grid-column *ngFor="let column of controller.masterFormModel.masterGridColumnsModel" kendoTooltip
+                         field="{{column.field}}" width="{{column.width}}"
+                         title="{{column.title ? (column.title | translator) : (column.field | translator)}}"
+                         format="{{column.format}}" [sortable]="column.sortable? column.sortable : true">
+        <ng-template kendoGridCellTemplate let-cell>
+          <mcb-grid-cell kendoTooltip *ngIf="!column.cellTemplate" [cell]="cell" [field]="column.field"
+                         type="{{column.type}}" [align]="column.align">
+          </mcb-grid-cell>
+          <span #el>
+            <mcb-grid-cell kendoTooltip *ngIf="column.cellTemplate" [cell]="cell" [type]="column.type"
+                           [field]="el.innerText" [align]="column.align"
+                           (initialize)="column.cellTemplate(el,cell)"
+                           (inputChange)="column.cellTemplate(el,cell)">
+            </mcb-grid-cell>
+          </span>
+          <mcb-toggle *ngIf="column.type === 'toggle'"
+                      title="{{column.title ? (column.title| translator): cell[column.field] | translator}}"
+                      [disabled]=" cell.id !==selectedRow.id || column.locked"
+                      [(checked)]="cell[column.field]" (change)="onChangeToggle(column.field, cell)"
+                      kendoTooltip>
+          </mcb-toggle>
+        </ng-template>
+      </kendo-grid-column>
+      <ng-template kendoGridDetailTemplate let-dataItem
+                   *ngIf="controller.masterFormModel.masterGridDetailColumnsModel.length">
+        <section>
+          <div class="row">
+            <div class="pr-2" [ngStyle]="{'width':getSize(column.width)}"
+                 *ngFor="let column of controller.masterFormModel.masterGridDetailColumnsModel">
+              <p dir="rtl"><strong>{{column.title? (column.title| translator): column.field}}:</strong>
+                {{column.field}}</p>
+            </div>
+          </div>
+        </section>
+      </ng-template>
+
+
+      <kendo-grid-command-column [width]="operationOption.width ? operationOption.width : 150"
+                                 [hidden]="operationOption.hidden" [locked]="operationOption.locked"
+                                 [resizable]="operationOption.resizable"
+                                 [headerStyle]="operationOption.headerStyle"
+                                 [title]="operationOption.title?( operationOption.title | translator) : ('operations' |translator)">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <ng-template [ngTemplateOutlet]="operationsTemplate || defaultTemplate"
+                       [ngTemplateOutletContext]="{row: dataItem}"></ng-template>
+        </ng-template>
+      </kendo-grid-command-column>
+    </kendo-grid>
+  </div>
+
+</mcb-main-panel>
+
+<ng-template #defaultTemplate let-item="row">
+  <button kendoButton kendoTooltip *mcbPermission="permission.edit" title="{{'edit' | translator}}"
+          [disabled]="(gridOption.mySelection.length> 1) || (item.id !== selectedRow.id)"
+          iconClass="fa fa-edit green" (click)="editSelectedEntity(item)"></button>
+  <button kendoButton kendoTooltip *mcbPermission="permission.delete" title="{{'delete' | translator}}"
+          [disabled]="(item.id !== selectedRow.id) || (gridOption.mySelection.length> 1)"
+          iconClass="fa fa-trash-alt red" (click)="controller.beforeDeleteSelectedEntity(item)"></button>
+  <button kendoButton kendoTooltip *mcbPermission="permission.show" title="{{'show' | translator}}"
+          [disabled]="gridOption.mySelection.length> 1 || item.id !== selectedRow.id"
+          iconClass="fa fa-eye orange" (click)="selectEntityInPopupMode(item)"></button>
+</ng-template>
+
+<mcb-main-panel #addEditDialog *ngIf="addEditMainPanel" [title]="crudPanelSetTitle() | translator">
+
+  <ng-content select="[addEdit-items]">
+
+  </ng-content>
+  <button kendoButton class="ml-2" type="submit" icon="save" [disabled]="controller.editForm.invalid"
+          (click)="saveMasterEntity()">
+    {{'save'| translator}}
+  </button>
+  <button kendoButton type="button" icon="arrow-right" (click)="backToMain()">
+    {{'return'| translator}}
+  </button>
+</mcb-main-panel>

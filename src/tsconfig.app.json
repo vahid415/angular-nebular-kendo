@@ -13,5 +13,14 @@
     "../src/*.ts",
     "../src/**/*.ts",
     "../node_modules/@nebular/**/*.ts"
-  ]
+  ],
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "paths": {
+    "@app/core": [
+      "../src/app/@core/public-api",
+    ]   
+  }
 }

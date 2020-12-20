@@ -1,0 +1,5 @@
+<label class="switch">
+  <input class="toggleInput" type="checkbox" [disabled]="disabled" [value]="value" [checked]="value" (input)="onChange($event)">
+  <span class="slider{{shape === 'round' ? ' round' : ''}}{{disabled ? ' disabled' : ''}}"></span>
+</label>
+

@@ -1,0 +1,11 @@
+<!-- <nb-sidebar-header>
+  <nb-search type="rotate-layout" (click)="startSearch()" placeholder="نام برنامه"
+  (tabOut)="tabOut($event)" (submitSearch)="search($event)" (searchClose)="searchClose($event)"
+  hint="جستجو"></nb-search>
+  <div class="mcb-side-search">
+    <input type="text" placeholder="جست و جو" />
+  </div>
+    <i class="mcb-side-search-hide fa fa-search"></i>
+</nb-sidebar-header> -->
+<nb-menu *ngIf="grantedItems" tag="menu" [items]="grantedItems">
+</nb-menu>

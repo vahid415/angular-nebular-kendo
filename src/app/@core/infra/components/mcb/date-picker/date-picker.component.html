@@ -1,0 +1,18 @@
+<div class="mcb-date-picker-wrapper">
+    <input #inputRef class="k-textbox" [disabled]="disabled" [(ngModel)]="_text" (input)="_onInput($event)"
+        (blur)="_onBlur($event)" maxlength="10" (focus)="_onInputFocus()" />
+    <button type="button" (click)="_onToggleBtnClick($event)" class="mcb-date-picker-toggle-btn" [disabled]="disabled">
+        <span class="k-icon k-i-calendar text-muted"></span>
+    </button>
+</div>
+
+<kendo-popup [anchor]="inputRef" *ngIf="open">
+    <ngb-datepicker #datePicker firstDayOfWeek="6" [footerTemplate]="footerTemplate" (select)="_onDateSelect($event)"
+        [minDate]="_min()" [maxDate]="_max()" [(ngModel)]="_datePickerValue">
+    </ngb-datepicker>
+    <ng-template #footerTemplate>
+        <div class="mcb-date-picker-footer">
+            <button type="button" kendoButton (click)="_onTodayClick()">امروز</button>
+        </div>
+    </ng-template>
+</kendo-popup>

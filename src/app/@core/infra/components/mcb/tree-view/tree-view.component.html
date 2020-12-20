@@ -1,0 +1,27 @@
+<input *ngIf="filterable"
+       name="filter"
+       kendoTextBox
+       type="text"
+       [(ngModel)]="filter"
+       (ngModelChange)="filterChange.emit($event)"
+       [placeholder]="filterPlaceholder ? filterPlaceholder : '' " />
+
+<kendo-treeview #treeview
+                kendoTreeViewExpandable
+                [textField]="textField"
+                [nodes]="_firstLevelNodes"
+                [hasChildren]="hasChildrenFunc"
+                [children]="_childrenFunc"
+                (nodeClick)="_onNodeClick($event)"
+                [kendoTreeViewSelectable]="selectable"
+                (selectionChange)="selectionChange.emit($event)"
+                [kendoTreeViewCheckable]="checkable">
+</kendo-treeview>
+
+
+<kendo-contextmenu #contextMenu
+
+                   (select)="_onMenuItemSelect($event)"
+                   [items]="contextMenuItems"
+                   [popupAlign]="{ horizontal: 'right', vertical: 'top'}">
+</kendo-contextmenu>

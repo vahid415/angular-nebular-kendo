@@ -1,0 +1,11 @@
+<label *ngIf="labelText" class="mcb-form-control-label">
+  <span class="form-control-label-text">{{labelText}}</span>
+  <span *ngIf="required" class="required-symbol">&#32;*</span>
+</label>
+
+<ng-content></ng-content>
+
+<small *ngIf="showMessages" class="mcb-form-control-subscript">
+  <span *ngIf="hintText && !errorText" class="text-muted hint-text" [title]="hintText">{{hintText}}</span>
+  <span *ngIf="errorText && showValidationErrors" class="text-danger error-text" [title]="errorText">{{errorText}}</span>
+</small>

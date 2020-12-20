@@ -1,0 +1,8 @@
+<kendo-dialog *ngIf="showDialog" [title]="title" [width]="350" (close)="reject()">
+  {{text}}
+  <kendo-dialog-actions>
+    <button class="mcb-confirm-btn" kendoButton [iconClass]="'fa fa-check-circle'" (click)="accept()">بلی
+    </button>
+    <button class="mcb-confirm-btn" kendoButton [iconClass]="'fa fa-times-circle'" (click)="reject()"> خیر</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

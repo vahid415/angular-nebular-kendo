@@ -1,0 +1,34 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <app-portal-user-area-header></app-portal-user-area-header>
+  </nb-layout-header>
+  <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
+    <!-- <nb-sidebar-header>
+      <a href="#" class="btn btn-hero-success main-btn">
+        <i class="ion ion-social-github"></i>
+        <span>Support Us</span>
+      </a>
+    </nb-sidebar-header> -->
+    <app-portal-user-area-sidebar></app-portal-user-area-sidebar>
+  </nb-sidebar>
+  <nb-layout-column class="mcb-page-content-wrapper">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+  <nb-layout-footer fixed>
+    <app-portal-user-area-footer style="width: 100%;"></app-portal-user-area-footer>
+  </nb-layout-footer>
+</nb-layout>
+
+<!-- <div class="mcb-page-wrapper">
+  <mcb-portal-user-area-sidebar></mcb-portal-user-area-sidebar>
+  <div class="mcb-page-content-wrapper {{showSidebarClass}}">
+    <mcb-portal-user-area-header></mcb-portal-user-area-header>
+    <div class="mcb-page-content">
+      <router-outlet mcbRouterOutlet></router-outlet>
+      <div #contentArea style="position: relative;">
+      </div>
+    </div>
+   <mcb-portal-user-area-footer></mcb-portal-user-area-footer>
+  </div>
+</div> -->
+<!-- <div kendoWindowContainer></div>  -->

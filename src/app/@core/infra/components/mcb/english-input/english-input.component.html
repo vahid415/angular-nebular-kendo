@@ -1,0 +1,20 @@
+<input
+  [(ngModel)]="value"
+  [maxlength]="maxLength"
+  [minlength]="minLength"
+  [disabled]="disabled"
+  [placeholder]="placeholder"
+  type="text"
+  kendoTextBox
+  kendoTooltip
+  [value]="value"
+  #tooltip="kendoTooltip"
+  #anchor title=""
+  showOn="none"
+  (keyup)="showTooltip(anchor)"
+  (focus)="showTooltip(anchor)"
+  (blur)="hideTooltip()"
+  mcbEnglishInput
+  #englishDir="mcbEnglishInput"
+  (hideTitleBar)="handleHideTitleBar()"
+/>

@@ -1,0 +1,22 @@
+.mcb-bread-crumb {
+    color: #dc0000;
+}
+
+.link-item {
+  color: initial;
+  cursor: pointer;
+  color: #ff6262;
+  font-weight: 400;
+}
+
+.static-item {
+  color: #545454 !important;
+}
+
+.home-link {
+  color: #ff6262;
+}
+
+.home-link:hover, .link-item:hover {
+  color: #7d0002 !important;
+}

@@ -1,0 +1,32 @@
+mcb-date-picker {
+  display: block;
+}
+
+
+.mcb-date-picker-wrapper {
+  position: relative;
+}
+
+.mcb-date-picker-wrapper input {
+  width: 100%;
+}
+
+.mcb-date-picker-toggle-btn {
+  height: 100%;
+  width: 1em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  left: 0.5em;
+  position: absolute;
+}
+
+.mcb-date-picker-toggle-btn:focus {
+  outline: none;
+}
+
+.mcb-date-picker-footer {
+  text-align: center;
+  padding: 5px;
+}

@@ -1,0 +1,17 @@
+<div class="mcb-bread-crumb">
+  <ul>
+    <li>
+      <a [routerLink]="['dashboard']"> <i class="fa fa-home home-link" ></i> </a>
+    </li>
+
+    <ng-container *ngFor="let item of getBreadcrumbItems()">
+      <li><span class="fa fa-chevron-left"></span></li>
+      <li>
+        <a *ngIf="item.path; else elseBlock" (click)="onItemClick(item)" class="link-item">{{item[breadcrumbItemTextSymbol]}}</a>
+        <ng-template #elseBlock>
+          <a class="static-item">{{item[breadcrumbItemTextSymbol]}}</a>
+        </ng-template>
+      </li>
+    </ng-container>
+  </ul>
+</div>

@@ -1,0 +1,7 @@
+<nb-actions size="medium" [class.right]="position === normal" [class.left]="position === inverse">
+  <nb-action>
+    <nb-user [nbContextMenu]="userMenu" NbContextMenuDirective [onlyPicture]="false" [name]="userFullName"
+             [picture]="userImg" nbContextMenuTag="user-header-context-menu">
+    </nb-user>
+  </nb-action>
+</nb-actions>

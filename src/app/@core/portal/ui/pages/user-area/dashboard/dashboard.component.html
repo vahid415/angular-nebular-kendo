@@ -1,0 +1,70 @@
+<app-main-panel [title]="'dashboard' | translator">
+  <div class="row mt-4 ">
+    <div class="col">
+      <div class="d-flex flex-column h-100">
+        <div class="card">
+          <div class="card-header">
+            <span class="fa fa-user"></span>
+            اطلاعات کاربری
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">کابر: <span>{{fullname}}</span></div>
+              <div class="col">سازمان: <span>{{organizationTitle}}</span></div>
+              <div class="col">آخرین ورود: <span>-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3 flex-grow-1">
+          <div class="card-header">
+            <span class="fa fa-list"></span>
+            کارتابل
+            <button kendoButton [icon]="'refresh'" class="float-left"></button>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="row my-3">
+                  <div class="col">جاری: <span>{{0}}</span></div>
+                  <div class="col">ارجاعات امروز: <span>{{0}}</span></div>
+                  <div class="col"> قفل شده: <span>{{0}}</span></div>
+                </div>
+              </li>
+              <li class="list-group-item">موردی وجود ندارد.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-auto">
+      <ngb-datepicker [footerTemplate]="footerTemplate"></ngb-datepicker>
+      <ng-template #footerTemplate>
+        <hr class="my-0">
+        <div class="d-flex date">
+          <div class="flex-fill text-center">
+            <span>{{jalaaliDateString}}</span>
+          </div>
+          <div class=" border-right pr-3">{{time}}</div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <span class="fa fa-bell"></span>
+          اطلاعیه های سازمانی
+          <button kendoButton [icon]="'refresh'" class="float-left"></button>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">موردی وجود ندارد.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-main-panel>

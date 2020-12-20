@@ -1,0 +1,8 @@
+<div class="mcb-page-panel {{showSidebarClass}}">
+  <div *ngIf="title" class="mcb-page-title">
+    <h3>{{title | translator}}</h3>
+  </div>
+  <div class="mcb-page-body p-2">
+    <ng-content></ng-content>
+  </div>
+</div>

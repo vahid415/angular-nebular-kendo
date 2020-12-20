@@ -1,0 +1,64 @@
+<mcb-grid-search-in *ngIf="showSearchPanel">
+  <ng-container *ngTemplateOutlet="mcbGridSearch.template"></ng-container>
+</mcb-grid-search-in>
+<kendo-toolbar style="direction: rtl;">
+  <kendo-toolbar-button *ngIf="visibleNewAction" [text]="'grid-caption-new-button' | translator : 'core'"
+                        (click)="added()" [iconClass]="'fa fa-plus blue'"></kendo-toolbar-button>
+  <kendo-toolbar-button *ngIf="visibleRefreshAction" (click)="refreshed()"
+                        [text]="'grid-caption-refresh-button' | translator : 'core'"
+                        [iconClass]="'fa fa-sync silver'"></kendo-toolbar-button>
+  <kendo-toolbar-button *ngIf="visibleSearchAction" (click)="searched()"
+                        [text]="'search' | translator : 'core'"
+                        [iconClass]="showSearchPanel ?'fa fa-search-minus silver' : 'fa fa-search-plus silver'">
+  </kendo-toolbar-button>
+  <kendo-toolbar-button *ngFor="let action of toolbarActions" (click)="action.actionClick()"
+                        [text]="action.text" [iconClass]="action.icon">
+  </kendo-toolbar-button>
+</kendo-toolbar>
+<ng-template #template let-anchor>
+  <span>{{ anchor.nativeElement.innerText }}</span>
+</ng-template>
+<div kendoTooltip showOn="none" [tooltipTemplate]="template" filter=".mcb-grid-cell-content"
+     (mouseover)="showTooltip($event)">
+  <kendo-grid [data]="data" [pageSize]="pageSize" [skip]="skip" [sortable]="true" [sort]="sortSetting"
+              (sortChange)="handleSortChange($event)" [pageable]="pageSetting" [rowSelected]=""
+              (pageChange)="handlePageChange($event)" [selectable]="true" [resizable]="true">
+
+    <kendo-grid-column *ngFor="let colMain of columns" [title]="colMain.title" [sortable]="true"
+                       [width]="colMain.width ? colMain.width : 150">
+      <ng-template kendoGridCellTemplate let-cell>
+        <mcb-grid-cell [cell]="cell" [field]="colMain.field" [type]="colMain.type" [align]="colMain.align">
+        </mcb-grid-cell>
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column [sortable]="false" [title]="'row' | translator : 'core'" [width]="rowNumColumnWidth">
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+        <span class="mcb-grid-row-index">{{rowIndex + 1}}</span>
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column *ngIf="showActionColumn" [title]="'grid-header-operation' | translator : 'core'"
+                       [sortable]="false" [width]="300" [locked]="lockedActions">
+      <ng-template kendoGridCellTemplate let-dataAction let-rowIndex="rowIndex">
+        <kendo-dropdownbutton *ngIf="menuActions?.length>0" [data]="menuActions"
+                              [iconClass]="'fa fa-chevron-circle-down blank-icon'">
+          عملیات بیشتر
+          <ng-template kendoDropDownButtonItemTemplate let-menuItem>
+            <button class="mcb-grid-dropDownButton" *ngIf="menuItem.visible(dataAction)"
+                    [disabled]="menuItem.disable(dataAction)" [attr.aria-disabled]="false" kendoButton
+                    (click)="menuItem.actionClick(dataAction)"><span class="{{ menuItem.icon }}"></span>
+              {{menuItem.text}}
+            </button>
+          </ng-template>
+        </kendo-dropdownbutton>
+        <a *ngFor="let action of buttonActions">
+          <button type="button" *ngIf="action.visible(dataAction)" [disabled]="action.disable(dataAction)"
+                  (click)="action.actionClick(dataAction)" kendoButton class="mcb-grid-column-button"
+                  kendoTooltip [title]="action.text" tooltipClass="mcb-tooltip">
+            <i [class]="action.icon + ' blank-icon'"></i>
+            <span *ngIf="action.inlineText">{{action.text}}</span>
+          </button>
+        </a>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+</div>
