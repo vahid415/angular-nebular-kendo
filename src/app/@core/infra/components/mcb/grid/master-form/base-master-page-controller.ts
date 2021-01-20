@@ -23,7 +23,7 @@ export abstract class BaseMasterPageController {
   searchForm: NgForm;
   // form: FormGroup = new FormGroup({});
 
-  constructor (masterFormService: GenericCrudService) {
+  constructor(masterFormService: GenericCrudService) {
     this.masterFormService = masterFormService;
     this.initMasterFormLabels();
     this.initDataGridColumns();
